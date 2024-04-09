@@ -11,19 +11,16 @@ if (!empty($_POST)) {
 // Montar a SQL (pgsql)
         $sql = "INSERT INTO usuario
 
-(nome, data_nascimento, telefone, email, senha, produtos)
+(nome, telefone, email, senha)
 VALUES
-(:nome, :dataNascimento, :telefone, :email, :senha, :produtos)";
-        // Preparar a SQL (pdo)
+(:nome, :telefone, :email, :senha)";// Preparar a SQL (pdo)
         $stmt = $pdo->prepare($sql);
         // Definir/organizar os dados p/ SQL
         $dados = array(
             ':nome' => $_POST['nome'],
-            ':dataNascimento' => $_POST['dataNascimento'],
             ':telefone' => $_POST['telefone'],
             ':email' => $_POST['email'],
-            ':senha' => md5($_POST['senha']), //md5 é um padrão de criptografia
-            ':produtos' => $_POST['produtos']
+            ':senha' => md5($_POST['senha']) //md5 é um padrão de criptografia
         );
         // Tentar Executar a SQL (INSERT)
 // Realizar a inserção das informações no BD (com o PHP)
